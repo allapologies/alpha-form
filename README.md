@@ -1,7 +1,7 @@
 # Alpha form
 Sample implementation of dynamic form
 
-[DEMO](https://www.github.com)
+[DEMO](https://allapologies.github.io/alpha-form/)
 
 ## Getting Started
 
