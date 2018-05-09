@@ -54,13 +54,6 @@
       "text": "Was a police report filed?",
       "reply": "",
       "type": "boolean",
-      "next": "B02"
-    },
-    {
-      "id": "B02",
-      "text": "Please upload the police report (document / image)",
-      "reply": "",
-      "type": "file",
       "next": "C01"
     },
     {
