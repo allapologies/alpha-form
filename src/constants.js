@@ -11,4 +11,5 @@ export const process = 'process';
 export const summary = 'summary';
 
 // LocalStorageProgressKey
+export const __property_prefix = '__form';
 export const __form_step_id = '__form_step_id';
