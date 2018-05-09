@@ -15,7 +15,7 @@ const getAnswerByType = (value = '', type) => {
   if (type === booleanType) {
     return value === true ? locales['summary.true'] : locales['summary.false'];
   }
-  return value.toString();
+  return value;
 };
 
 export const Summary = ({ questions, onFinish }) => (
