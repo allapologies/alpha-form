@@ -1,4 +1,4 @@
-import { SET_QUESTION_ID, GO_BACK, SUBMIT_STEP } from '../action-types';
+import { SET_QUESTION_ID, GO_BACK, SUBMIT_STEP, LOAD_SCHEMA } from '../action-types';
 
 const initialState = null;
 
@@ -9,6 +9,8 @@ export default (state = initialState, action) => {
       return action.id;
     case SUBMIT_STEP:
       return action.nextId;
+    case LOAD_SCHEMA:
+      return action.initialId
     default:
       return state;
   }
