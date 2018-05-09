@@ -48,5 +48,6 @@ export const getQuestionsWithReplies = createSelector(
 
 export const getCurrenQuestionValue = createSelector(
   [getCurrentQuestion, formValuesSelector],
-  (question, values) => values[question.id] || ''
-)
+  (question, values) => values[question.id] || '',
+);
+
