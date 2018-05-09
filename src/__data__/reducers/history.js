@@ -7,7 +7,7 @@ export default (state = initialState, action) => {
     case SET_QUESTION_ID:
       return [...state, action.id];
     case LOAD_SCHEMA:
-      return [action.initialId];
+      return action.history;
     case SUBMIT_STEP:
       return [...state, action.nextId]
     case GO_BACK:
