@@ -8,14 +8,14 @@ import locales from '../locales.json';
 
 const renderFileType = () => <span>Ooops...file preview is not supported yet</span>;
 
-const getAnswerByType = (value, type) => {
+const getAnswerByType = (value = '', type) => {
   if (type === fileType) {
     return renderFileType();
   }
-  if (type !== booleanType) {
-    return value.toString();
+  if (type === booleanType) {
+    return value === true ? locales['summary.true'] : locales['summary.false'];
   }
-  return value === true ? locales['summary.true'] : locales['summary.false'];
+  return value.toString();
 };
 
 export const Summary = ({ questions, onFinish }) => (
