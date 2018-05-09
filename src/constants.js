@@ -2,7 +2,7 @@ export const stringType = 'string';
 export const dateType = 'date';
 export const numberType = 'number';
 export const booleanType = 'boolean';
-export const file = 'file';
+export const fileType = 'file';
 
 export const FORM_NAME = 'questions';
 

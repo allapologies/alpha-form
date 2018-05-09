@@ -4,12 +4,12 @@ import Number from './number-input';
 import Text from './text-input';
 import FileInput from './file-input';
 
-import { booleanType, dateType, numberType, stringType, file } from '../../constants';
+import { booleanType, dateType, numberType, stringType, fileType } from '../../constants';
 
 export default {
   [booleanType]: Checkbox,
   [dateType]: Date,
   [numberType]: Number,
   [stringType]: Text,
-  [file]: FileInput
+  [fileType]: FileInput,
 };

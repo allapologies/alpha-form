@@ -11,7 +11,7 @@ class FileInput extends Component {
 
   handleChange = (e) => {
     this.setState({ file: e.target.files[0] }, () => {
-      this.props.input.onChange(this.state.file)
+      this.props.input.onChange(this.state.file.name)
     })
   }
 
@@ -19,7 +19,7 @@ class FileInput extends Component {
     const { file } = this.state
     return (
       <div>
-        {file ? 'loaded!' : 'please upload file'}
+        {file && 'loaded!'}
         <div>
           <input type="file" onChange={this.handleChange} />
         </div>

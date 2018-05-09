@@ -2,10 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getQuestionsWithReplies } from '../__data__/selectors';
-import { booleanType } from '../constants';
+import { booleanType, fileType } from '../constants';
 import locales from '../locales.json';
 
+
+const renderFileType = () => <span>Ooops...file preview is not supported yet</span>;
+
 const getAnswerByType = (value, type) => {
+  if (type === fileType) {
+    return renderFileType();
+  }
   if (type !== booleanType) {
     return value.toString();
   }
@@ -15,18 +21,18 @@ const getAnswerByType = (value, type) => {
 export const Summary = ({ questions, onFinish }) => (
   <table>
     <thead>
-      <tr>
-        <th>Question</th>
-        <th>Answer</th>
-      </tr>
+    <tr>
+      <th>Question</th>
+      <th>Answer</th>
+    </tr>
     </thead>
     <tbody>
-      {questions.map(({ id, type, text, reply }) => (
-        <tr key={id}>
-          <td>{text}</td>
-          <td>{getAnswerByType(reply, type)}</td>
-        </tr>
-      ))}
+    {questions.map(({ id, type, text, reply }) => (
+      <tr key={id}>
+        <td>{text}</td>
+        <td>{getAnswerByType(reply, type)}</td>
+      </tr>
+    ))}
     </tbody>
     <div className="row">
       <div className="row">
@@ -55,7 +61,8 @@ Summary.propTypes = {
 
 Summary.defaultProps = {
   questions: [],
-  onFinish: () => {},
+  onFinish: () => {
+  },
 };
 
 const mapStateToProps = state => ({ questions: getQuestionsWithReplies(state) });
