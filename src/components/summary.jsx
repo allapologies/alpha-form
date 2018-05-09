@@ -19,21 +19,23 @@ const getAnswerByType = (value = '', type) => {
 };
 
 export const Summary = ({ questions, onFinish }) => (
-  <table>
-    <thead>
-    <tr>
-      <th>Question</th>
-      <th>Answer</th>
-    </tr>
-    </thead>
-    <tbody>
-    {questions.map(({ id, type, text, reply }) => (
-      <tr key={id}>
-        <td>{text}</td>
-        <td>{getAnswerByType(reply, type)}</td>
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>Question</th>
+        <th>Answer</th>
       </tr>
-    ))}
-    </tbody>
+      </thead>
+      <tbody>
+      {questions.map(({ id, type, text, reply }) => (
+        <tr key={id}>
+          <td>{text}</td>
+          <td>{getAnswerByType(reply, type)}</td>
+        </tr>
+      ))}
+      </tbody>
+    </table>
     <div className="row">
       <div className="row">
         <div className="col s6 m2 l2">
@@ -47,7 +49,8 @@ export const Summary = ({ questions, onFinish }) => (
         </div>
       </div>
     </div>
-  </table>
+  </div>
+
 );
 
 Summary.propTypes = {

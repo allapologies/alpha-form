@@ -32,7 +32,7 @@ class Process extends React.Component {
       );
     }
 
-    const { question: { text, id, type, reply } } = this.props;
+    const { question: { text, id, type } } = this.props;
 
     const initialValues = this.getInitialValues()
 
