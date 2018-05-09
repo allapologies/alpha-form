@@ -1,5 +1,4 @@
 import loadSchema from './load-schema';
-import setQuestion from './set-question-id';
 
 const DELAY = 1;
 
