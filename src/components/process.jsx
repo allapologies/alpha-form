@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import fetchSchema from '../__data__/actions/fetch-schema';
-import { getCurrentQuestion, stageSelector } from '../__data__/selectors';
+import { getCurrentQuestion, stageSelector, schemaSelector } from '../__data__/selectors';
 import sampleData from '../__data__/sample-data.json';
 
 import { booleanType } from '../constants';
@@ -16,6 +16,15 @@ class Process extends React.Component {
     this.props.fetchSchema(sampleData.questions);
   }
 
+  getInitialValues = () => {
+
+    const { schema } = this.props;
+
+    return schema.reduce((result, { id, reply, type }) => {
+      return { ...result, [id]: type === booleanType ? !!reply : reply }
+    }, {})
+  }
+
   render() {
     if (!this.props.question.text) {
       return (
@@ -25,7 +34,7 @@ class Process extends React.Component {
 
     const { question: { text, id, type, reply } } = this.props;
 
-    const initialValues = { [id]: type === booleanType ? !!reply : reply };
+    const initialValues = this.getInitialValues()
 
     return (
       <Form
@@ -44,15 +53,18 @@ Process.propTypes = {
     text: PropTypes.string,
   }),
   fetchSchema: PropTypes.func.isRequired,
+  schema: PropTypes.array
 };
 
 Process.defaultProps = {
   question: {},
+  schema: []
 };
 
 const mapStateToProps = state => ({
   question: getCurrentQuestion(state),
   stage: stageSelector(state),
+  schema: schemaSelector(state)
 });
 
 export default connect(mapStateToProps, { fetchSchema })(Process);

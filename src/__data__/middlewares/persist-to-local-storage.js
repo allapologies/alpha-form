@@ -9,23 +9,36 @@ const removeItems = (itemsArray = []) =>
 
 const getDataFromLocalStorage = (key) => localStorage.getItem(key);
 
+const mapPersistedValuesToSchema = (schema) => schema.map((question) => {
+  return {
+    ...question,
+    reply: getDataFromLocalStorage(question.id)
+  }
+})
+
 export default store => next => action => {
   const { type } = action;
 
   if (type === LOAD_SCHEMA) {
     const persistedState = getDataFromLocalStorage(__form_step_id);
     if (!!persistedState) {
-      return next({...action, initialId: persistedState })
+      const updatedSchema = mapPersistedValuesToSchema(action.schema);
+
+      return next({
+        ...action,
+        schema: updatedSchema,
+        initialId: persistedState
+      })
     }
   }
 
   if (type === SUBMIT_STEP) {
     const state = store.getState()
-    const id = questionIdSelector(state)
+    const currentId = questionIdSelector(state)
     const value = getCurrenQuestionValue(state)
 
-    saveDataToLocalStorage(id, value);
-    saveDataToLocalStorage(__form_step_id, id);
+    saveDataToLocalStorage(currentId, value);
+    saveDataToLocalStorage(__form_step_id, action.nextId);
   }
 
   if (type === SET_STAGE && action.stage === summary) {

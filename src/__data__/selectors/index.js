@@ -3,7 +3,7 @@ import { getFormValues } from 'redux-form';
 import { FORM_NAME } from '../../constants';
 
 export const questionIdSelector = state => state.question;
-const schemaSelector = state => state.schema;
+export const schemaSelector = state => state.schema;
 export const historySelector = state => state.history;
 export const stageSelector = state => state.stage;
 
